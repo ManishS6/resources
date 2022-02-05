@@ -2,7 +2,6 @@ import './App.css';
 import { useState,useEffect } from 'react';
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container"
 export default function App() {
   const [posts_react, setPostsReact] = useState({});
   const [posts_devOps, setPostsDevOps] = useState({});
@@ -22,15 +21,20 @@ export default function App() {
       setPostsDevOps(data)
     })
     .catch(err=>{
-      setError('unable to fetch posts_devOps')
+      setError('unable to fetch posts_devOps '+err)
     })
   },[])
 
 
   return (
     <div className="App">
-      <h6>Note: This is a first draft</h6>
-      <h1>Resources:</h1>
+      <h6>Note: This is a first draft made in a hurry</h6>
+      {error 
+      ?
+      <h1>Resources: </h1>
+      :
+      <h1>⚠Check Backend</h1>
+      }
       <h3>React.Js</h3>
       <div style={{display:'flex',margin:'2px',padding:'2px'}}>
         {posts_react &&
