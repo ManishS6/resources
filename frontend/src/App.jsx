@@ -1,23 +1,67 @@
 import './App.css';
 import { useState,useEffect } from 'react';
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container"
 export default function App() {
-  const [posts, setPosts] = useState({});
+  const [posts_react, setPostsReact] = useState({});
+  const [posts_devOps, setPostsDevOps] = useState({});
   const [error, setError] = useState(null);
   useEffect(()=>{
-    fetch('https://res-json-server.herokuapp.com/posts')
+    fetch('https://res-json-server.herokuapp.com/React.Js')
     .then(res=>res.json())
     .then(data=>{
-      setPosts(data)
+      setPostsReact(data)
     })
     .catch(err=>{
-      setError('unable to fetch posts')
+      setError('unable to fetch posts_react')
+    })
+    fetch('https://res-json-server.herokuapp.com/DevOps')
+    .then(res=>res.json())
+    .then(data=>{
+      setPostsDevOps(data)
+    })
+    .catch(err=>{
+      setError('unable to fetch posts_devOps')
     })
   },[])
 
 
   return (
     <div className="App">
-      <h3>Testing</h3>
+      <h6>Note: This is a first draft</h6>
+      <h1>Resources:</h1>
+      <h3>React.Js</h3>
+      <div style={{display:'flex',margin:'2px',padding:'2px'}}>
+        {posts_react &&
+          Object.entries(posts_react).map(post=>(
+            <Card style={{ width: '18rem' }}>
+              <Card.Img variant="top" src={post[1].img_url} />
+              <Card.Body>
+              <Card.Title>{post[1].post}</Card.Title>
+              <Card.Text> </Card.Text>
+              <a href={post[0].url} alt="butto"><Button variant="primary"> Visit </Button></a>
+              </Card.Body>
+            </Card>
+          ))
+        }
+      </div>
+      <h3>DevOps</h3>
+      <div style={{display:'flex',margin:'2px',padding:'2px'}}>
+        {posts_react &&
+          Object.entries(posts_devOps).map(post=>(
+            <Card style={{ width: '18rem' }}>
+              <Card.Img variant="top" src={post[1].img_url} />
+              <Card.Body>
+              <Card.Title>{post[1].post}</Card.Title>
+              <Card.Text> </Card.Text>
+              <a href={post[0].url} alt="butto"><Button variant="primary"> Visit </Button></a>
+              </Card.Body>
+            </Card>
+          ))
+        }
+      </div>
+      <h3>Made with ❤ by ManishS6.</h3>
     </div>
   );
 }
