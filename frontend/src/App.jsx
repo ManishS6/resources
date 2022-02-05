@@ -44,7 +44,7 @@ export default function App() {
               <Card.Body>
               <Card.Title>{post[1].post}</Card.Title>
               <Card.Text> </Card.Text>
-              <a href={post[0].url} alt="butto"><Button variant="primary"> Visit </Button></a>
+              <a href={post[1].url} alt="btn"><Button variant="primary"> Visit </Button></a>
               </Card.Body>
             </Card>
           ))
@@ -59,7 +59,7 @@ export default function App() {
               <Card.Body>
               <Card.Title>{post[1].post}</Card.Title>
               <Card.Text> </Card.Text>
-              <a href={post[0].url} alt="butto"><Button variant="primary"> Visit </Button></a>
+              <a href={post[1].url} alt="butto"><Button variant="primary"> Visit </Button></a>
               </Card.Body>
             </Card>
           ))
