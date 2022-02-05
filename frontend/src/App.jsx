@@ -29,7 +29,7 @@ export default function App() {
   return (
     <div className="App">
       <h6>Note: This is a first draft made in a hurry</h6>
-      {error 
+      {!error 
       ?
       <h1>Resources: </h1>
       :
